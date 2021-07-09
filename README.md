@@ -28,7 +28,7 @@ create database velog;
 ```
 
 ### `yml 설정`
-```aidl
+```
 
 server:
   port: 8080
@@ -100,7 +100,7 @@ Frontend-server
 
 ### `의존성`
 
-```aidl
+```
 "dependencies": {
     "antd": "^4.15.5",
     "axios": "^0.21.1",
@@ -127,7 +127,7 @@ Frontend-server
 
 ### prettierrc
 
-```aidl
+```
 
 {
   "singleQuote": true,
