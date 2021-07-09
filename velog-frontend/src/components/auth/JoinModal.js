@@ -1,10 +1,10 @@
-import { Button, Divider, Form, Input, Modal } from "antd";
-import React, { memo } from "react";
-import { UserOutlined } from "@ant-design/icons";
+import { Button, Divider, Form, Input, Modal } from 'antd';
+import React, { memo } from 'react';
+import { UserOutlined } from '@ant-design/icons';
+import { StyledAntForm } from '../style';
 
 const JoinModal = memo((props) => {
-  const { joinVisible, joinForm, handleCancel, toggleModal, onJoinFinish } =
-    props;
+  const { joinVisible, joinForm, handleCancel, toggleModal, onJoinFinish, loading } = props;
 
   return (
     <div>
@@ -13,74 +13,59 @@ const JoinModal = memo((props) => {
         title="회원가입"
         visible={joinVisible}
         onCancel={handleCancel}
+        width={550}
         footer={[
           <div
             style={{
-              display: "flex",
-              justifyContent: "flex-end",
+              display: 'flex',
+              justifyContent: 'flex-end',
             }}
           >
-            <div style={{ marginTop: "0.3rem" }}>
+            <div style={{ marginTop: '0.3rem' }}>
               <span style={{}}>이미 계정이 있습니까? </span>
             </div>
-            <Button
-              type="link"
-              style={{ color: "green" }}
-              onClick={toggleModal}
-            >
+            <Button type="link" style={{ color: 'green' }} onClick={toggleModal}>
               로그인
             </Button>
           </div>,
         ]}
       >
-        <Form
-          form={joinForm}
-          name="horizontal_login"
-          layout="inline"
-          onFinish={onJoinFinish}
-        >
+        <StyledAntForm form={joinForm} name="horizontal_login" layout="inline" onFinish={onJoinFinish}>
           <Form.Item
             name="username"
             rules={[
               {
                 required: true,
-                message: "Please input your username!",
+                message: 'Please input your username!',
               },
             ]}
           >
-            <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder="Username"
-            />
+            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
           </Form.Item>
           <Form.Item
             name="password"
             rules={[
               {
                 required: true,
-                message: "Please input your password!",
+                message: 'Please input your password!',
               },
             ]}
           >
-            <Input placeholder="Password" />
+            <Input.Password placeholder="Password" />
           </Form.Item>
           <Form.Item shouldUpdate>
             {() => (
               <Button
                 type="primary"
                 htmlType="submit"
-                disabled={
-                  !joinForm.isFieldsTouched(true) ||
-                  !!joinForm
-                    .getFieldsError()
-                    .filter(({ errors }) => errors.length).length
-                }
+                loading={loading}
+                disabled={!joinForm.isFieldsTouched(true) || !!joinForm.getFieldsError().filter(({ errors }) => errors.length).length}
               >
                 회원가입
               </Button>
             )}
           </Form.Item>
-        </Form>
+        </StyledAntForm>
       </Modal>
     </div>
   );

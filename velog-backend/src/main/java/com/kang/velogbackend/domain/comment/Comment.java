@@ -2,6 +2,7 @@ package com.kang.velogbackend.domain.comment;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kang.velogbackend.domain.BaseTimeEntity;
+import com.kang.velogbackend.domain.comment.recomment.Recomment;
 import com.kang.velogbackend.domain.post.Post;
 import com.kang.velogbackend.domain.user.User;
 import lombok.AllArgsConstructor;
@@ -10,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -33,6 +35,13 @@ public class Comment extends BaseTimeEntity {
     @JoinColumn(name = "userId")
     @ManyToOne
     private User user;
+
+
+    //양방향 매핑
+    @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JsonIgnoreProperties({"comment"})
+    @OrderBy("id desc")
+    private List<Recomment> recomments;
 
 
 }

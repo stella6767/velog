@@ -1,70 +1,27 @@
-import { Global } from "../style";
-import { Row, Col, Layout, Card } from "antd";
-import "antd/dist/antd.css";
-import HomeHeader from "./HomeHeader";
+import { Col, Layout, Row } from 'antd';
+import { Global } from '../style';
+import AppHeader from './AppHeader';
 
 const { Content } = Layout;
 
-const style = { background: "#0092ff", padding: "8px 0" };
+const AppLayout = (props) => {
+  const { isHome } = props;
 
-const { Meta } = Card;
+  // const { principal } = useSelector(({ auth }) => ({
+  //   principal: auth.principal,
+  // }));
 
-const AppLayout = () => {
   return (
     <Layout>
       <Global />
-      <HomeHeader />
-
+      <AppHeader isHome={isHome} />
       <Content>
         <Row>
-          <Col flex="1 1 20rem">
-            <Card
-              hoverable
-              cover={
-                <img
-                  alt="example"
-                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                />
-              }
-            >
-              <Meta
-                title="Europe Street beat"
-                description="www.instagram.com"
-              />
-            </Card>
+          <Col xs={1} sm={1} md={2} lg={2} xl={3}></Col>
+          <Col xs={22} sm={22} md={20} lg={20} xl={18}>
+            {props.children}
           </Col>
-          <Col flex="1 1 20rem">
-            <Card
-              hoverable
-              cover={
-                <img
-                  alt="example"
-                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                />
-              }
-            >
-              <Meta
-                title="Europe Street beat"
-                description="www.instagram.com"
-              />
-            </Card>
-          </Col>
-          <Col flex="1 1 20rem">
-            <Card
-              hoverable
-              cover={
-                <img
-                  alt="example"
-                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                />
-              }
-            >
-              <Meta
-                title="Europe Street beat"
-                description="www.instagram.com"
-              />
-            </Card>
-          </Col>
+          <Col xs={1} sm={1} md={2} lg={2} xl={3}></Col>
         </Row>
       </Content>
     </Layout>

@@ -6,14 +6,16 @@ import com.kang.velogbackend.domain.comment.Comment;
 import com.kang.velogbackend.domain.likes.Likes;
 import com.kang.velogbackend.domain.tag.Tag;
 import com.kang.velogbackend.domain.user.User;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
+@Builder
+@Setter
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Post extends BaseTimeEntity {
 
@@ -21,10 +23,14 @@ public class Post extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false,length = 100)
+    private String title;
+
     @Lob
     private String content;
 
-    private String sumNail;
+    @Lob //일단은 이렇게
+    private String thumbnail;
 
     @JsonIgnoreProperties({"posts"})
     @ManyToOne
@@ -44,6 +50,12 @@ public class Post extends BaseTimeEntity {
     @OneToMany(mappedBy = "post")
     private List<Comment> comments;
 
+
+    @Transient  //칼럼이 만들어지지 않는다.
+    private int likeCount;
+
+    @Transient
+    private boolean likeState;
 
 
 }

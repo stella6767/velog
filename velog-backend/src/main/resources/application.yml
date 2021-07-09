@@ -7,6 +7,18 @@ server:
       enabled: true
 
 spring:
+  cache:
+    type: redis
+  redis:
+    host: 127.0.0.1
+    port: 6397
+
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 5
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/velog?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
@@ -16,10 +28,10 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    show-sql: true
+#    show-sql: true
 
   jackson:
     serialization:
@@ -29,4 +41,15 @@ spring:
       user:
         name: kang
         password: 1234
+
+#logging:
+#  level:
+#    root: debug
+#
+
+
+jwt:
+  secret: kimdonggeunkimdonggeunkimdonggeunkimdonggeunkimdonggeunkimdonggeunkimdonggeunkimdonggeun
+
+
 

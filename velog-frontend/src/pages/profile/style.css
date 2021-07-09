@@ -1,0 +1,48 @@
+.title-wrapper {
+  width: 9.5rem;
+  flex-shrink: 0;
+}
+
+.block-for-mobile {
+  flex: 1 1 0%;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.contents {
+  flex: 1 1 0%;
+  font-size: 1rem;
+  color: rgb(73, 80, 87);
+  line-height: 1.5;
+}
+
+.edit-wrapper {
+  display: flex;
+  /* -webkit-box-align: center; */
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.updateBtn {
+  outline: none;
+  padding: 0px;
+  border: none;
+  display: inline;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgb(18, 184, 134);
+  text-decoration: underline;
+  background: none;
+  cursor: pointer;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.description {
+  margin-top: 0.875rem;
+  color: rgb(134, 142, 150);
+  font-size: 0.875rem;
+}
