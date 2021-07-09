@@ -1,5 +1,3 @@
-import { Button, withStyles } from "@material-ui/core";
-import { blueGrey } from "@material-ui/core/colors";
 import React, { memo, useState } from "react";
 import styled from "styled-components";
 import logo_img from "../logo.svg";
@@ -29,20 +27,20 @@ const LoginBox = styled.div`
   align-items: center;
 `;
 
-const ColorButton = withStyles((theme) => ({
-  root: {
-    color: theme.palette.getContrastText(blueGrey[900]),
-    backgroundColor: blueGrey[900],
-    fontSize: 16,
-    marginLeft: 20,
-    borderRadius: 50,
-    height: 30,
+// const ColorButton = withStyles((theme) => ({
+//   root: {
+//     color: theme.palette.getContrastText(blueGrey[900]),
+//     backgroundColor: blueGrey[900],
+//     fontSize: 16,
+//     marginLeft: 20,
+//     borderRadius: 50,
+//     height: 30,
 
-    "&:hover": {
-      backgroundColor: blueGrey[700],
-    },
-  },
-}))(Button);
+//     "&:hover": {
+//       backgroundColor: blueGrey[700],
+//     },
+//   },
+// }))(Button);
 
 const HeaderLeftDiv = styled.div`
   display: flex;
@@ -93,13 +91,13 @@ const HomeHeader = memo(() => {
             <img src="/images/search.svg" />
           </a>
           <div>
-            <ColorButton
+            {/* <ColorButton
               variant="contained"
               color="primary"
               onClick={showLoginModal}
             >
               로그인
-            </ColorButton>
+            </ColorButton> */}
             {/* 모달 컨테이너 */}
             <AuthModal
               loginVisible={loginVisible}
