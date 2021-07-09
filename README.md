@@ -21,7 +21,7 @@ Backend-server
 
 ### `DB 설정`
 
-```aidl
+```
 create user 'kang'@'%' identified by 'Stella@6767';
 GRANT ALL PRIVILEGES ON *.* TO 'kang'@'%';
 create database velog;
