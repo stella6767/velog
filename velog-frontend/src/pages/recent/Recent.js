@@ -28,13 +28,13 @@ const Recent = memo((props) => {
     setPage(0);
     //console.log('왜 바로바로 실행이 안되지..');
     dispatch(loadRecentPostsAction(page));
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     if (loadRecentPostsDone) {
       setPage(page + 1);
     }
-  }, [loadRecentPostsDone, page]);
+  }, [loadRecentPostsDone]);
 
   useEffect(() => {
     //console.log(recentPosts);
