@@ -15,7 +15,7 @@ const CommentCard = memo((props) => {
   const dispatch = useDispatch();
 
   const onDeleteClick = () => {
-    console.log('댓글 삭제', comment.id);
+    //console.log('댓글 삭제', comment.id);
 
     dispatch(commentDeleteAction(comment.id));
   };

@@ -1,11 +1,7 @@
-import React, { memo } from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import React, { memo, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import AppLayout from '../../components/AppLayout';
 import PostCard from '../../components/PostCard';
-import { loadPostsInitAction } from '../../reducers/post';
 import { loadUserPostAction, userPostsInitAction } from '../../reducers/user';
 import { StyledMainDiv } from '../home/style';
 
@@ -27,7 +23,7 @@ const LikeList = memo((props) => {
     dispatch(userPostsInitAction());
     setPage(0);
     dispatch(loadUserPostAction(page));
-  }, []);
+  }, [dispatch, page]);
 
   useEffect(() => {
     if (loadUserPostDone) {
@@ -37,10 +33,10 @@ const LikeList = memo((props) => {
     if (loadUserPostError != null) {
       alert('무언가 오류');
     }
-  }, [loadUserPostDone, loadUserPostError]);
+  }, [loadUserPostDone, loadUserPostError, page]);
 
   useEffect(() => {
-    console.log(likedPosts);
+    //console.log(likedPosts);
 
     function onScroll() {
       if (window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {

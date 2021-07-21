@@ -26,18 +26,18 @@ const Recent = memo((props) => {
     //dispatch(loadUserAction());
     dispatch(loadPostsInitAction());
     setPage(0);
-    console.log('왜 바로바로 실행이 안되지..');
+    //console.log('왜 바로바로 실행이 안되지..');
     dispatch(loadRecentPostsAction(page));
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (loadRecentPostsDone) {
       setPage(page + 1);
     }
-  }, [loadRecentPostsDone]);
+  }, [loadRecentPostsDone, page]);
 
   useEffect(() => {
-    console.log(recentPosts);
+    //console.log(recentPosts);
 
     function onScroll() {
       if (window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
@@ -57,7 +57,7 @@ const Recent = memo((props) => {
   return (
     <>
       <AppLayout isHome={isHome}>
-        {recentPosts.length != 1 && (
+        {recentPosts.length != 0 && (
           <StyledMainDiv>
             {recentPosts.map((post) => (
               <PostCard key={post.id} post={post} loading={loadPostLoading} />

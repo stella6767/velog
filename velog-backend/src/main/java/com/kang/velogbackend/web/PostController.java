@@ -31,7 +31,7 @@ public class PostController {
     public CMRespDto<?> deleteById(@PathVariable Long id, @AuthenticationPrincipal PrincipalDetails details){
 
         log.info("게시글 삭제" + id);
-
+        //외래키 설정.. 어케 해결할까..
         int result = postService.삭제하기(id, details.getUser().getId());
 
         return new CMRespDto<>(result, "게시글 삭제 성공", null);

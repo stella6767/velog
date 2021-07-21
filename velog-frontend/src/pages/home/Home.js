@@ -23,16 +23,16 @@ const Home = () => {
     dispatch(loadPostsInitAction());
     setPage(0);
     dispatch(loadTrendPostsAction(page));
-  }, []);
+  }, [dispatch, page]);
 
   useEffect(() => {
     if (loadTrendPostsDone) {
       setPage(page + 1);
     }
-  }, [loadTrendPostsDone]);
+  }, [loadTrendPostsDone, page]);
 
   useEffect(() => {
-    console.log(trendPosts);
+    //console.log(trendPosts);
 
     function onScroll() {
       if (window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
@@ -52,7 +52,7 @@ const Home = () => {
   return (
     <>
       <AppLayout isHome={isHome}>
-        {trendPosts.length != 1 && (
+        {trendPosts.length != 0 && (
           <StyledMainDiv>
             {trendPosts.map((post) => (
               <PostCard key={post.id} post={post} loading={loadPostLoading} />

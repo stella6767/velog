@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import useUpdateEffect from '../lib/hooks/useUpdateEffect';
 import logo_img from '../logo.svg';
-import { loadUserAction, logoutAction } from '../reducers/auth';
+import { logoutAction } from '../reducers/auth';
 import AuthModal from './auth/ModalContainer';
 import HomeHeader from './HomeHeader';
 import './MyHeader.scss';
@@ -61,13 +61,13 @@ const AppHeader = memo((props) => {
   }));
 
   useEffect(() => {
-    console.log('principal', principal);
+    //console.log('principal', principal);
   }, [principal]);
 
   const dispatch = useDispatch();
 
   useUpdateEffect(() => {
-    console.log(loginDone, 'loginError', loginError);
+    //console.log(loginDone, 'loginError', loginError);
 
     if (loginDone) {
       alert('로그인 성공'); //매번 랜더링 될 때마다 실행되네.. home애서 실행하도록 해야겠다...
@@ -92,7 +92,7 @@ const AppHeader = memo((props) => {
   };
 
   const menu = (principalId) => {
-    console.log(principalId);
+    //console.log(principalId);
 
     return (
       <Menu>

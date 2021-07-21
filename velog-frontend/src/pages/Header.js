@@ -48,9 +48,9 @@ const Header = () => {
     const deltaY = pageYOffset - pageY;
     const hide = pageYOffset !== 0 && deltaY >= 0;
 
-    console.log('pageYOFFset', pageYOffset); //현재 스크롤 위치
-    console.log('daltaY', deltaY, 'pageY', pageY); //
-    console.log('hide', hide);
+    //console.log('pageYOFFset', pageYOffset); //현재 스크롤 위치
+    //console.log('daltaY', deltaY, 'pageY', pageY); //
+    //console.log('hide', hide);
 
     setHide(hide); //false
     setPageY(pageYOffset); //pageY는 현재 스크롤 위치를 계속 저장한다.
@@ -61,7 +61,7 @@ const Header = () => {
   useEffect(() => {
     documentRef.current.addEventListener('scroll', throttleScroll); //스크롤 이벤트 등록
     return () => documentRef.current.removeEventListener('scroll', throttleScroll);
-  }, [pageY]);
+  }, [pageY, throttleScroll]);
 
   return (
     <>

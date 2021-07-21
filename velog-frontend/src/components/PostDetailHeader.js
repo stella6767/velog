@@ -10,6 +10,7 @@ import { useState } from 'react';
 import moment from 'moment';
 import { StyledDetailTagLink, StyledLikeBtn, StyledPostDetailTagDiv, StyledUnlikeBtn } from './style';
 import { Button } from 'antd';
+import { useEffect } from 'react';
 
 const PostDetailHeader = memo((props) => {
   const {
@@ -31,6 +32,10 @@ const PostDetailHeader = memo((props) => {
   //이렇게 받아야지 redux data와 동기화가 안전하게 이루어짐.. 딱히 방법이 안 떠오르네..
   const [likeState, setLikeState] = useState(post.likeState);
   const [likeCount, setLikeCount] = useState(post.likeCount);
+
+  useEffect(() => {
+    console.log('userId', userId, 'principalId', principal.id);
+  }, []);
 
   useUpdateEffect(() => {
     if (likePostError) {
@@ -103,7 +108,7 @@ const PostDetailHeader = memo((props) => {
             <span style={{ marginLeft: '1rem' }}>{moment(post.createDate).format('YYYY년 MM월 DD일')}</span>
           </div>
 
-          {userId != null && principal != null && userId === principal.id ? (
+          {principal != null && userId == principal.id ? (
             <Button type="primary" shape="round" danger onClick={onDeletePost}>
               삭제
             </Button>

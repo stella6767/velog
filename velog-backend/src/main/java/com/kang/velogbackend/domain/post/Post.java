@@ -38,16 +38,16 @@ public class Post extends BaseTimeEntity {
     private User user;
 
     @JsonIgnoreProperties({"post"})
-    @OneToMany(mappedBy = "post") //mappedBy 하면 테이블의 칼럼 안 생김을 명시
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE) //mappedBy 하면 테이블의 칼럼 안 생김을 명시
     private List<Tag> tags;
 
     @JsonIgnoreProperties({"post"})
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private List<Likes> likes; //A 이미지에 홍길동, 장보고, 임꺽정 좋아요. (고소영)
 
     @OrderBy("id DESC")
     @JsonIgnoreProperties({"post"})
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private List<Comment> comments;
 
 

@@ -37,21 +37,21 @@ const CommentForm = (props) => {
       setValue('');
       setCommentLength(commentLength + 1);
 
-      console.log('성공', comment);
+      //console.log('성공', comment);
       //setComments(comments.concat(comment));
       setComments([comment, ...comments]); //배열 앞에 추가
     }
   }, [commentPostDone]);
 
   useEffect(() => {
-    console.log(comments);
+    //console.log(comments);
   }, [comments]);
 
   const handleSubmit = () => {
     if (!value) {
       return;
     }
-    console.log(value);
+    //console.log(value);
     const content = value; //이름을 일치시켜야 된다..
     dispatch(commentPostsAction({ content, postId }));
   };

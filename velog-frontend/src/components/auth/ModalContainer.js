@@ -31,13 +31,13 @@ const AuthModal = memo((props) => {
   useUpdateEffect(() => {
     if (joinError) {
       alert('회원가입 실패');
-      console.log(joinError);
+      //console.log(joinError);
       return;
     }
 
     if (joinDone) {
       alert(authData.msg);
-      console.log(joinDone);
+      //console.log(joinDone);
 
       if (authData.statusCode === -1) {
         setJoinVisible(true);
@@ -48,7 +48,7 @@ const AuthModal = memo((props) => {
   }, [joinDone, joinError]);
 
   const handleCancel = () => {
-    console.log('Clicked cancel button');
+    //console.log('Clicked cancel button');
     joinForm.resetFields();
     loginForm.resetFields();
     setLoginVisible(false);
@@ -61,7 +61,7 @@ const AuthModal = memo((props) => {
   };
 
   const onJoinFinish = (values) => {
-    console.log(values);
+    //console.log(values);
 
     const whiteSpace = checkSpace(values.username, values.password);
 
@@ -74,7 +74,7 @@ const AuthModal = memo((props) => {
   };
 
   const onLoginFinish = (values) => {
-    console.log('login Finish:', values);
+    //console.log('login Finish:', values);
 
     const whiteSpace = checkSpace(values.username, values.password);
 

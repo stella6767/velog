@@ -1,8 +1,7 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AppLayout from '../../components/AppLayout';
 import { notImpl } from '../../lib/constants/auth';
-import useUpdateEffect from '../../lib/hooks/useUpdateEffect';
 import { imgPutAction } from '../../reducers/user';
 import {
   StyledImgRemoveButton,
@@ -33,7 +32,7 @@ const Profile = () => {
       console.log('profileImg', profileImg); //약간의 시간적 오차가 있음
       //기본적으로 새로고침하면 state 값 상실,
     }
-    console.log('profileImg', profileImg);
+    //console.log('profileImg', profileImg);
   }, [uploadImgDone, profileImg]);
 
   const imageInput = useRef();
@@ -42,42 +41,45 @@ const Profile = () => {
 
   const onClickImageUpload = useCallback(() => {
     imageInput.current.click();
-  }, [imageInput.current]);
-
-  const onChangeImages = useCallback((e, userId) => {
-    console.log('images', e.target.files);
-    console.log('principalId', userId);
-    let files = e.target.files;
-    let filesArr = Array.prototype.slice.call(files);
-
-    const data = new FormData();
-
-    filesArr.forEach((f) => {
-      if (!f.type.match('image.*')) {
-        alert('이미지를 등록해야 합니다.');
-        return;
-      }
-      //let profileImageForm = document.querySelector('#profile-image_form');
-      //console.log('profileimg', profileImageForm);
-      data.append('profileImageFile', f);
-
-      //setImgFile(f);
-      //console.log('event', e.target.result); //없네??
-      //setImgEvent(e.target.result);
-
-      console.log('imageFormData', data);
-      dispatch(imgPutAction({ userId, data }));
-    });
-
-    // [].forEach.call(e.target.files, (f) => {
-    //   data.append('image', f);
-    //   console.log('f', f);
-    // });
-    // console.log(data);
-    // //객체로 받을 때는 변수명 일치 신경쓰셈
-
-    //dispatch(imgPutAction({ userId, data }));
   }, []);
+
+  const onChangeImages = useCallback(
+    (e, userId) => {
+      console.log('images', e.target.files);
+      //console.log('principalId', userId);
+      let files = e.target.files;
+      let filesArr = Array.prototype.slice.call(files);
+
+      const data = new FormData();
+
+      filesArr.forEach((f) => {
+        if (!f.type.match('image.*')) {
+          alert('이미지를 등록해야 합니다.');
+          return;
+        }
+        //let profileImageForm = document.querySelector('#profile-image_form');
+        //console.log('profileimg', profileImageForm);
+        data.append('profileImageFile', f);
+
+        //setImgFile(f);
+        //console.log('event', e.target.result); //없네??
+        //setImgEvent(e.target.result);
+
+        console.log('imageFormData', data);
+        dispatch(imgPutAction({ userId, data }));
+      });
+
+      // [].forEach.call(e.target.files, (f) => {
+      //   data.append('image', f);
+      //   console.log('f', f);
+      // });
+      // console.log(data);
+      // //객체로 받을 때는 변수명 일치 신경쓰셈
+
+      //dispatch(imgPutAction({ userId, data }));
+    },
+    [dispatch],
+  );
 
   return (
     <>

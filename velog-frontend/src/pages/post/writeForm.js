@@ -28,7 +28,7 @@ const writeForm = memo((props) => {
   useUpdateEffect(() => {
     if (addPostDone) {
       //history go postdetail
-      console.log('저장하기 성공');
+      //console.log('저장하기 성공');
       props.history.replace(`/${principal.id}/${postId}`);
     }
   }, [addPostDone, postId]);
@@ -42,10 +42,10 @@ const writeForm = memo((props) => {
   // },[]);
 
   const exitForm = () => {
-    console.log('props', props);
-    console.log('history객체', props.history);
-    console.log('match 객체', props.match);
-    console.log('location 객체', props.location);
+    //console.log('props', props);
+    //console.log('history객체', props.history);
+    //console.log('match 객체', props.match);
+    //console.log('location 객체', props.location);
 
     props.history.goBack();
   };
@@ -73,7 +73,7 @@ const writeForm = memo((props) => {
             <Input placeholder="#태그" />
           </Form.Item>
           <Form.Item name="content">
-            <TextEditor name="content" value={value} onChange={(value) => setvalue(value)} name="content" />
+            <TextEditor name="content" value={value} onChange={(value) => setvalue(value)} />
           </Form.Item>
           <Form.Item>
             <StyledButtonDiv>
